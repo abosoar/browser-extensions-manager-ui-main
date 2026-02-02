@@ -5,6 +5,10 @@
         align-items: center;
         justify-content: space-between;
     }
+    .filters{
+        gap: 1.6rem;
+
+    }
     .section-title{
         margin: 0;
     }
