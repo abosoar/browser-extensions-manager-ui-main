@@ -8,6 +8,7 @@
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="queries.css">
   <title>Frontend Mentor | Browser extensions manager UI</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
@@ -24,49 +25,52 @@
 </head>
 
 <body>
-  <header class="header">
-    <img src="./assets/images/logo.svg" alt="extensions logo" class="logo">
-    <div class="btn color-mode-toggle">
-      <img src="./assets/images/icon-moon.svg" alt="icon of dark mode" class="mode-icon">
-    </div>
-  </header>
-  <main class="extension-list">
-    <div class="list-header">
-      <h2 class="section-title">Extension List</h2>
-      <div class="filters">
-        <input type="radio" name="filter" id="all" class="hidden">
-        <label for="all" class="btn filter">All</label>
-        <input type="radio" name="filter" id="active" class="hidden">
-        <label for="active" class="btn filter">Active</label>
-        <input type="radio" name="filter" id="inactive" class="hidden">
-        <label for="inactive" class="btn filter">Inactive</label>
+  <div class="container">
+    <header class="header">
+      <img src="./assets/images/logo.svg" alt="extensions logo" class="logo">
+      <div class="btn color-mode-toggle">
+        <img src="./assets/images/icon-moon.svg" alt="icon of dark mode" class="mode-icon">
       </div>
-    </div>
-    <div class="extensions">
-    </div>
-    <template id="ext-temp">
-      <div class="extension">
-        <div class="ext-info">
-          <img src="" alt="" class="ext-img">
-          <div class="ext-text">
-            <div class="ext-name"></div>
-            <p class="ext-description"></p>
+    </header>
+    <main class="extension-list">
+      <div class="list-header">
+        <h2 class="section-title">Extension List</h2>
+        <div class="filters">
+          <input type="radio" name="filter" id="all" class="hidden">
+          <label for="all" class="btn filter">All</label>
+          <input type="radio" name="filter" id="active" class="hidden">
+          <label for="active" class="btn filter">Active</label>
+          <input type="radio" name="filter" id="inactive" class="hidden">
+          <label for="inactive" class="btn filter">Inactive</label>
+        </div>
+      </div>
+      <div class="extensions">
+      </div>
+      <template id="ext-temp">
+        <div class="extension">
+          <div class="ext-info">
+            <img src="" alt="" class="ext-img">
+            <div class="ext-text">
+              <div class="ext-name"></div>
+              <p class="ext-description"></p>
+            </div>
+          </div>
+          <div class="ext-actions">
+            <div class="action-remove">Remove</div>
+            <input type="checkbox" name="" id="" class="hidden">
+            <label class="action-activate" for=""></label>
           </div>
         </div>
-        <div class="ext-actions">
-          <div class="action-remove">Remove</div>
-          <input type="checkbox" name="" id="" class="hidden">
-          <label class="action-activate" for=""></label>
-        </div>
-      </div>
-    </template>
-  </main>
-  <script src="./script.js"></script>
+      </template>
+    </main>
+    <script src="./script.js"></script>
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
   </div>
+
 </body>
 
 </html>
