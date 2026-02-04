@@ -1,9 +1,9 @@
 const extensionsContainer = document.querySelector(".extensions");
 const template = document.querySelector("#ext-temp");
 const allFilterEl = document.querySelector("#all");
-if (localStorage.getItem('data-theme')){
-  document.documentElement.setAttribute('data-theme', localStorage.getItem('data-theme'))
-}
+const root = document.documentElement;
+const themeToggler = document.querySelector(".color-mode-toggle");
+const themeIcon = document.querySelector(".mode-icon");
 let extensionsData;
 fetch("./data.json")
   .then((res) => res.json())
@@ -42,23 +42,34 @@ function renderExtensions(data) {
   });
 }
 // Dark & light themes
-const root = document.documentElement;
-const themeToggler = document.querySelector(".color-mode-toggle");
-const themeIcon = document.querySelector(".mode-icon");
+if (localStorage.getItem("data-theme")) {
+  root.setAttribute(
+    "data-theme",
+    localStorage.getItem("data-theme")
+  );
+  changeThemeIcon();
+}
+
 themeToggler.addEventListener("click", () => {
   if (root.getAttribute("data-theme") === "dark") {
     root.setAttribute("data-theme", "light");
-    themeIcon.setAttribute("src", "./assets/images/icon-moon.svg");
-    themeIcon.setAttribute("alt", "icon of light mode");
-    localStorage.setItem('data-theme', 'light')
+
+    localStorage.setItem("data-theme", "light");
   } else {
     root.setAttribute("data-theme", "dark");
+    localStorage.setItem("data-theme", "dark");
+  }
+  changeThemeIcon();
+});
+function changeThemeIcon() {
+  if (localStorage.getItem("data-theme") === "light") {
+    themeIcon.setAttribute("src", "./assets/images/icon-moon.svg");
+    themeIcon.setAttribute("alt", "icon of dark mode");
+  } else {
     themeIcon.setAttribute("src", "./assets/images/icon-sun.svg");
     themeIcon.setAttribute("alt", "icon of light mode");
-    localStorage.setItem('data-theme', 'dark')
   }
-});
-
+}
 // filtering functionality
 [...document.querySelectorAll("input[name=filter]")].forEach((filterEl) => {
   filterEl.addEventListener("input", () => {
