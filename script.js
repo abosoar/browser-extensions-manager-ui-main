@@ -1,6 +1,9 @@
 const extensionsContainer = document.querySelector(".extensions");
 const template = document.querySelector("#ext-temp");
 const allFilterEl = document.querySelector("#all");
+if (localStorage.getItem('data-theme')){
+  document.documentElement.setAttribute('data-theme', localStorage.getItem('data-theme'))
+}
 let extensionsData;
 fetch("./data.json")
   .then((res) => res.json())
@@ -47,10 +50,12 @@ themeToggler.addEventListener("click", () => {
     root.setAttribute("data-theme", "light");
     themeIcon.setAttribute("src", "./assets/images/icon-moon.svg");
     themeIcon.setAttribute("alt", "icon of light mode");
+    localStorage.setItem('data-theme', 'light')
   } else {
     root.setAttribute("data-theme", "dark");
     themeIcon.setAttribute("src", "./assets/images/icon-sun.svg");
     themeIcon.setAttribute("alt", "icon of light mode");
+    localStorage.setItem('data-theme', 'dark')
   }
 });
 
