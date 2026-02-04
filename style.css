@@ -45,9 +45,6 @@ input[type="radio"]:checked + label {
   background-color: var(--accent);
   color: var(--base-secondary2);
 }
-.hidden {
-  display: none;
-}
 * {
   margin: 0;
   padding: 0;
