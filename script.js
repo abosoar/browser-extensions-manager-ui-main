@@ -34,7 +34,7 @@ function renderExtensions(data) {
     activationStatusEl.checked = extData.isActive;
 
     activationStatusEl.addEventListener("input", () => {
-      extData.isActive = !extData;
+      extData.isActive = !extData.isActive;
       if (!allFilterEl.checked) {
         extEl.style.display = "none";
       }
