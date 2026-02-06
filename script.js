@@ -14,6 +14,7 @@ fetch("./data.json")
 
 function renderExtensions(data) {
   extensionsContainer.innerHTML = "";
+  console.log(data);
 
   data.forEach((extData) => {
     const clone = document.importNode(template.content, true);
@@ -23,6 +24,7 @@ function renderExtensions(data) {
     const extDescriptionEl = clone.querySelector(".ext-description");
     const activationStatusEl = clone.querySelector("input[type='checkbox']");
     const activationLabelEl = clone.querySelector("label");
+    const removeExtEl = clone.querySelector(".action-remove");
     extImgEl.setAttribute("src", extData.logo);
     extImgEl.setAttribute("alt", extData.name + " Logo");
     activationStatusEl.setAttribute("name", extData.name);
@@ -39,14 +41,15 @@ function renderExtensions(data) {
         extEl.style.display = "none";
       }
     });
+    removeExtEl.addEventListener("click", () => {
+      extEl.style.display = "none";
+      extData["removed"] = true;
+    });
   });
 }
 // Dark & light themes
 if (localStorage.getItem("data-theme")) {
-  root.setAttribute(
-    "data-theme",
-    localStorage.getItem("data-theme")
-  );
+  root.setAttribute("data-theme", localStorage.getItem("data-theme"));
   changeThemeIcon();
 }
 
@@ -80,20 +83,22 @@ function changeThemeIcon() {
 
 function filterExtensions(extensions, filter = null) {
   let filteredExtensions;
+  filteredExtensions = extensions.filter((extension) => {
+    return !extension.removed;
+  });
   switch (filter) {
     case "active":
-      filteredExtensions = extensions.filter((extension) => {
+      filteredExtensions = filteredExtensions.filter((extension) => {
         return extension.isActive;
       });
       break;
     case "inactive":
-      filteredExtensions = extensions.filter((extension) => {
+      filteredExtensions = filteredExtensions.filter((extension) => {
         return !extension.isActive;
       });
       break;
 
     default:
-      filteredExtensions = extensions;
       break;
   }
   return filteredExtensions;
