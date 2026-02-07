@@ -11,7 +11,7 @@ fetch("./data.json")
     extensionsData = res;
     renderExtensions(res);
   });
-
+allFilterEl.checked = true;
 function renderExtensions(data) {
   extensionsContainer.innerHTML = "";
   console.log(data);
