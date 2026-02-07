@@ -14,7 +14,6 @@ fetch("./data.json")
 allFilterEl.checked = true;
 function renderExtensions(data) {
   extensionsContainer.innerHTML = "";
-  console.log(data);
 
   data.forEach((extData) => {
     const clone = document.importNode(template.content, true);
